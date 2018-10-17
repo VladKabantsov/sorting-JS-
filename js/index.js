@@ -100,5 +100,4 @@ const merge_sort = (array) => {
     return merge_sort(array);
 };
 
-console.log(merge_sort(startArray));
 
