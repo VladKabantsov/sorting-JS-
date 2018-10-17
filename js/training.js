@@ -64,4 +64,75 @@ const check = (brs) => {
     return ret;
 };
 
-console.log( check('{([[[])}') );
+const sum = () => {
+
+    let currentSum = 0;
+
+    let add = val => {
+        currentSum += val;
+        return add;
+    };
+
+    add.toString = () => {
+      return currentSum;
+    };
+
+    return add;
+};
+
+const getAnagrams = (arguments) => {
+
+    let result = [];
+
+    const isAnagram = (firstVal, secondVal) => {
+
+        let firstSplited = firstVal.split('');
+
+        let secondSplited = secondVal.split('');
+
+        while (firstSplited.length) {
+
+            let char = firstSplited[ 0 ];
+
+            let index = secondSplited.indexOf(char);
+
+            if (index !== -1) {
+
+                firstSplited.splice(0 ,1);
+
+                secondSplited.splice(index, 1);
+            } else {
+
+                return false;
+            }
+        }
+
+        return !firstSplited.length && !secondSplited.length;
+    };
+
+    for (let i = 0, dataLength = arguments.length; i < dataLength; i++) {
+
+        for (let j = i + 1; j < dataLength; j++) {
+
+            if (isAnagram(arguments[ i ], arguments[ j ])) {
+
+                result.push([ arguments[ i ], arguments[ j ] ]);
+            }
+        }
+    }
+
+    return result;
+};
+
+// console.log(getAnagrams(['нос', 'сон', 'снедь', 'днесь']));
+
+const five = (arg) => arg ? arg + 5 : 5;
+const one = (arg) => arg ? arg + 1 : 1;
+const two = (arg) => arg ? arg + 2 : 2;
+const seven = (arg) => arg ? arg + 7 : 7;
+const add = (val) => val;
+const subtract = (val) => -1 * val;
+
+console.log(five(add(one())));
+console.log(seven(subtract(two())));
+console.log(seven(add(seven())));
